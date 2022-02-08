@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { AiOutlineHome } from "react-icons/ai"
+import {AiOutlineHome} from "react-icons/ai"
 import {getTestSet} from "../../data/TestSet";
 import WordDisplay from "./WordDisplay";
 import ControlBar from "./ControlBar";
@@ -42,7 +42,7 @@ const HomeIconContainer = styled.div`
 const HomeIcon = styled(AiOutlineHome)`
   width: 24px;
   height: 24px;
-  
+
   &:hover {
     fill: darkgray;
   }
@@ -61,7 +61,7 @@ interface Props {
   setInGame(_: boolean): void;
 }
 
-const GamePlayPage = ({ setInGame }: Props) => {
+const GamePlayPage = ({setInGame}: Props) => {
   const [isLoading, setLoading] = useState<boolean>(false)
   const [testSet, setTestSet] = useState<string[]>([])
   const [currentIdx, setCurrentIdx] = useState<number>(0)
@@ -88,7 +88,9 @@ const GamePlayPage = ({ setInGame }: Props) => {
   }
 
   function setNextIndex() {
-    const newIdxList = notUsedList.filter(elem => { return elem !== currentIdx })
+    const newIdxList = notUsedList.filter((elem, index) => {
+      return index !== currentIdx
+    })
     setNotUsedListIdx(newIdxList)
     const newIndex = getRandomIndex(newIdxList.length)
     setCurrentIdx(newIndex)
@@ -99,12 +101,19 @@ const GamePlayPage = ({ setInGame }: Props) => {
       <TopBar>
         <TopBarTitle>5초 준다!</TopBarTitle>
         <HomeIconContainer onClick={() => setInGame(false)}>
-          <HomeIcon />
+          <HomeIcon/>
         </HomeIconContainer>
       </TopBar>
       <ContentsContainer>
-        <WordDisplay name={testSet[currentIdx]} />
-        <ControlBar />
+        {currentIdx === -1 &&
+          <p>모든 데이터를 사용했습니다!</p>
+        }
+        {currentIdx >= 0 &&
+        <>
+          <WordDisplay name={testSet[currentIdx]}/>
+          <ControlBar setNextIndex={setNextIndex}/>
+        </>
+        }
       </ContentsContainer>
     </Container>
   )

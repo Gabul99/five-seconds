@@ -34,6 +34,10 @@ const ButtonTitleText = styled.p`
   font-family: "bold", serif;
   color: white;
   font-size: 18px;
+  
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 `
 
 const RestartIcon = styled(VscDebugRestart)`
@@ -48,11 +52,15 @@ const NextIcon = styled(GrLinkNext)`
   margin-bottom: 12px;
 `
 
-const ControlBar = () => {
+interface Props {
+  setNextIndex(): void;
+}
+
+const ControlBar = ({ setNextIndex }: Props) => {
   return (
     <Container>
       <AgainButton />
-      <NextButton />
+      <NextButton setNextIndex={setNextIndex}/>
     </Container>
   );
 };
@@ -66,9 +74,13 @@ const AgainButton = () => {
   )
 }
 
-const NextButton = () => {
+interface NextButtonProps {
+  setNextIndex(): void;
+}
+
+const NextButton = ({ setNextIndex }: NextButtonProps) => {
   return (
-    <ButtonContainer backgroundColor={'limegreen'} hoverColor={'seagreen'}>
+    <ButtonContainer onClick={setNextIndex} backgroundColor={'limegreen'} hoverColor={'seagreen'}>
       <NextIcon />
       <ButtonTitleText>다음 가져와!</ButtonTitleText>
     </ButtonContainer>

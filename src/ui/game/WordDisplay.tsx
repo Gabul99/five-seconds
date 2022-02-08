@@ -6,6 +6,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 `
 
 const WordContainer = styled.div`
