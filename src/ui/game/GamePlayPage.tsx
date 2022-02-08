@@ -90,6 +90,7 @@ const GamePlayPage = ({setInGame}: Props) => {
 
   function setNextIndex() {
     setRound(round + 1)
+    setTimeout(() => {}, 500)
 
     /* Remove Current Index from Not Used Index List */
     const newIdxList = notUsedList.filter((elem) => {
