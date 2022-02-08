@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "regular";
+  src: url("./font/NotoSansKR-Regular.otf");
+}
+
+@font-face {
+  font-family: "bold";
+  src: url("./font/NotoSansKR-Bold.otf");
+}
+
+* { font-family: "regular", serif}
