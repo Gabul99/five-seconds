@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AiOutlineHome } from "react-icons/ai"
 import {getTestSet} from "../../data/TestSet";
 import WordDisplay from "./WordDisplay";
+import ControlBar from "./ControlBar";
 
 const Container = styled.div`
   width: 1024px;
@@ -103,6 +104,7 @@ const GamePlayPage = ({ setInGame }: Props) => {
       </TopBar>
       <ContentsContainer>
         <WordDisplay name={testSet[currentIdx]} />
+        <ControlBar />
       </ContentsContainer>
     </Container>
   )
