@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import GamePlayPage from "../game/GamePlayPage";
 
 const Container = styled.div`
   width: 100%;
@@ -29,7 +30,7 @@ const StartButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: whitesmoke;
+  color: white;
   cursor: pointer;
   
   font-family: "bold", serif;
@@ -40,14 +41,21 @@ const StartButton = styled.div`
 `
 
 const MainPage = () => {
+  const [isInGame, setInGame] = useState<boolean>(false);
+
   return (
     <Container>
+      { !isInGame &&
       <MainContainer>
         <TitleText>5초 준다!</TitleText>
-        <StartButton>
+        <StartButton onClick={() => setInGame(true)}>
           가져와!
         </StartButton>
       </MainContainer>
+      }
+      { isInGame &&
+        <GamePlayPage setInGame={setInGame}/>
+      }
     </Container>
   )
 }
