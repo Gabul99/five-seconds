@@ -66,6 +66,7 @@ const GamePlayPage = ({setInGame}: Props) => {
   const [testSet, setTestSet] = useState<string[]>([])
   const [currentIdx, setCurrentIdx] = useState<number>(0)
   const [notUsedList, setNotUsedListIdx] = useState<number[]>([])
+  const [round, setRound] = useState<number>(0)
 
   useEffect(() => {
     setLoading(true)
@@ -88,12 +89,23 @@ const GamePlayPage = ({setInGame}: Props) => {
   }
 
   function setNextIndex() {
-    const newIdxList = notUsedList.filter((elem, index) => {
-      return index !== currentIdx
+    setRound(round + 1)
+
+    /* Remove Current Index from Not Used Index List */
+    const newIdxList = notUsedList.filter((elem) => {
+      return elem !== currentIdx
     })
     setNotUsedListIdx(newIdxList)
+
+    /* Get Next Current Index */
     const newIndex = getRandomIndex(newIdxList.length)
-    setCurrentIdx(newIndex)
+
+    /* Set Next Current Index */
+    if (newIndex === -1) {
+      setCurrentIdx(-1)
+    } else {
+      setCurrentIdx(newIdxList[newIndex])
+    }
   }
 
   return (
@@ -106,11 +118,11 @@ const GamePlayPage = ({setInGame}: Props) => {
       </TopBar>
       <ContentsContainer>
         {currentIdx === -1 &&
-          <p>모든 데이터를 사용했습니다!</p>
+        <p>모든 데이터를 사용했습니다!</p>
         }
         {currentIdx >= 0 &&
         <>
-          <WordDisplay name={testSet[currentIdx]}/>
+          <WordDisplay name={testSet[currentIdx]} round={round}/>
           <ControlBar setNextIndex={setNextIndex}/>
         </>
         }
