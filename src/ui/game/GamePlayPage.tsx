@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {AiOutlineHome} from "react-icons/ai"
 import {getTestSet} from "../../data/TestSet";
-import WordDisplay from "./WordDisplay";
-import ControlBar from "./ControlBar";
+import WordDisplay from "./components/WordDisplay";
+import ControlBar from "./components/ControlBar";
 
 const Container = styled.div`
   width: 1024px;
