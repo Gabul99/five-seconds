@@ -53,14 +53,14 @@ const NextIcon = styled(GrLinkNext)`
 `
 
 interface Props {
-  setNextIndex(): void;
+  setNextRound(): void;
 }
 
-const ControlBar = ({ setNextIndex }: Props) => {
+const ControlBar = ({ setNextRound }: Props) => {
   return (
     <Container>
       <AgainButton />
-      <NextButton setNextIndex={setNextIndex}/>
+      <NextButton setNextRound={setNextRound}/>
     </Container>
   );
 };
@@ -75,12 +75,12 @@ const AgainButton = () => {
 }
 
 interface NextButtonProps {
-  setNextIndex(): void;
+  setNextRound(): void;
 }
 
-const NextButton = ({ setNextIndex }: NextButtonProps) => {
+const NextButton = ({ setNextRound }: NextButtonProps) => {
   return (
-    <ButtonContainer onClick={setNextIndex} backgroundColor={'limegreen'} hoverColor={'seagreen'}>
+    <ButtonContainer onClick={setNextRound} backgroundColor={'limegreen'} hoverColor={'seagreen'}>
       <NextIcon />
       <ButtonTitleText>다음 가져와!</ButtonTitleText>
     </ButtonContainer>

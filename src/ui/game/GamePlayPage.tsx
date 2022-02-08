@@ -83,15 +83,18 @@ const GamePlayPage = ({setInGame}: Props) => {
     setLoading(false)
   }, [])
 
+  useEffect(() => {
+    if (round !== 0) {
+      setNextIndex()
+    }
+  }, [round])
+
   function getRandomIndex(length: number): number {
     const randomNumber = Math.random() * length
     return Math.ceil(randomNumber) - 1
   }
 
   function setNextIndex() {
-    setRound(round + 1)
-    setTimeout(() => {}, 500)
-
     /* Remove Current Index from Not Used Index List */
     const newIdxList = notUsedList.filter((elem) => {
       return elem !== currentIdx
@@ -124,7 +127,7 @@ const GamePlayPage = ({setInGame}: Props) => {
         {currentIdx >= 0 &&
         <>
           <WordDisplay name={testSet[currentIdx]} round={round}/>
-          <ControlBar setNextIndex={setNextIndex}/>
+          <ControlBar setNextRound={() => setRound(round + 1)}/>
         </>
         }
       </ContentsContainer>
