@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# 5초 준다!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+보드게임 <5초 준다!> 를 친구들과 펜션 가서 파티게임으로 진행하기 위해 만든 프로젝트입니다
 
-## Available Scripts
+## 이 게임을 플레이 하려면 어떻게 해야 합니까?
 
-In the project directory, you can run:
+이 게임은 Github Pages 기능을 이용해 호스팅하고 있습니다.
 
-### `npm start`
+https://gabul99.github.io/five-seconds/ 으로 접속해 게임을 체험해보실 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 이 게임은 어떤 게임입니까?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+이 게임은 주어진 제시어를 보고, 해당 제시어에 부합하는 단어를 5초 안에 3가지 말하는 게임입니다.
 
-### `npm test`
+5초 안에 3가지를 말한 사람은 점수를 얻고, 이 점수를 먼저 10점 쌓은 사람이 이깁니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+한 가지 제시어를 공개 한 후, 5초 안에 첫 번째 사람이 대답하지 못하면, 그 다음 사람은 그 전 사람이 언급한 단어를 제외한 다른 단어로 도전해야 합니다.
 
-### `npm run build`
+그렇게 턴이 돌다가 모든 참여자가 5초 안에 3가지를 말하지 못했다면, 첫 번째 사람이 점수를 얻습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+실제 보드게임에는 추가적인 룰이 많지만, 현재 이 버전은 초기 버전이기 때문에 단순한 기능만 지니고 있습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Road Map
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Game Play
 
-### `npm run eject`
+- 유저 Concept 추가
+- Test Set 구성 옵션 제공
+- Test Set 제시어 추천 창구
+- 디자인 개선
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Stack 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+- TypeScript
+- styled-components
+- react-icons
+- github-pages
