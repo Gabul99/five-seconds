@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled, {css} from "styled-components";
+import Timer from "./Timer";
 
 const Container = styled.div`
   width: 100%;
@@ -68,9 +69,11 @@ const WordSubText = styled.p`
 interface Props {
   name: string;
   round: number;
+  startTimer: boolean;
+  setStartTimer(_: boolean): void;
 }
 
-const WordDisplay = ({ name, round }: Props) => {
+const WordDisplay = ({ name, round, startTimer, setStartTimer }: Props) => {
   const [hideWord, setHideWord] = useState<boolean>(true)
 
   useEffect(() => {
@@ -93,6 +96,7 @@ const WordDisplay = ({ name, round }: Props) => {
           <WordSubText>
             3가지를 말해라!
           </WordSubText>
+          <Timer startTimer={startTimer} setStartTimer={setStartTimer} />
         </>
         }
       </WordContainer>

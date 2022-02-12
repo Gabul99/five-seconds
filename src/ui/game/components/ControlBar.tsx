@@ -54,20 +54,25 @@ const NextIcon = styled(GrLinkNext)`
 
 interface Props {
   setNextRound(): void;
+  setStartTimer(_: boolean): void;
 }
 
-const ControlBar = ({ setNextRound }: Props) => {
+const ControlBar = ({ setNextRound, setStartTimer }: Props) => {
   return (
     <Container>
-      <AgainButton />
+      <AgainButton setStartTimer={setStartTimer} />
       <NextButton setNextRound={setNextRound}/>
     </Container>
   );
 };
 
-const AgainButton = () => {
+interface AgainButtonProps {
+  setStartTimer(_: boolean): void;
+}
+
+const AgainButton = ({ setStartTimer }: AgainButtonProps) => {
   return (
-    <ButtonContainer backgroundColor={'hotpink'} hoverColor={'palevioletred'}>
+    <ButtonContainer onClick={() => setStartTimer(true)} backgroundColor={'hotpink'} hoverColor={'palevioletred'}>
       <RestartIcon />
       <ButtonTitleText>한 번 더!</ButtonTitleText>
     </ButtonContainer>

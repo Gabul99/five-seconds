@@ -67,6 +67,7 @@ const GamePlayPage = ({setInGame}: Props) => {
   const [currentIdx, setCurrentIdx] = useState<number>(0)
   const [notUsedList, setNotUsedListIdx] = useState<number[]>([])
   const [round, setRound] = useState<number>(0)
+  const [startTimer, setStartTimer] = useState<boolean>(false)
 
   useEffect(() => {
     setLoading(true)
@@ -126,8 +127,8 @@ const GamePlayPage = ({setInGame}: Props) => {
         }
         {currentIdx >= 0 &&
         <>
-          <WordDisplay name={testSet[currentIdx]} round={round}/>
-          <ControlBar setNextRound={() => setRound(round + 1)}/>
+          <WordDisplay name={testSet[currentIdx]} round={round} startTimer={startTimer} setStartTimer={setStartTimer}/>
+          <ControlBar setNextRound={() => setRound(round + 1)} setStartTimer={setStartTimer}/>
         </>
         }
       </ContentsContainer>
