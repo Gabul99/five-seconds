@@ -28,6 +28,8 @@ https://gabul99.github.io/five-seconds/ 으로 접속해 게임을 체험해보�
 - Test Set 구성 옵션 제공
 - Test Set 제시어 추천 창구
 - 디자인 개선
+- Mobile Web 최적화
+- Game Info 추가
 
 ## Stack 
 
