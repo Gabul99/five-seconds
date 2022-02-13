@@ -9,9 +9,10 @@ const Container = styled.div`
   width: 100%;
 `
 
-const TimerText = styled.p`
-  font-size: 32px;
+const TimerText = styled.p<{color: string}>`
+  font-size: 44px;
   font-family: "bold", serif;
+  color: ${props => props.color};
 `
 
 interface Props {
@@ -51,10 +52,40 @@ const Timer = ({startTimer, setStartTimer}: Props) => {
     }, 1000)
   }
 
+  function getTimerTextColor(sec: number): string {
+    switch (sec) {
+      case 5:
+        return 'lime'
+      case 4:
+        return 'limegreen'
+      case 3:
+        return 'yellowgreen'
+      case 2:
+        return 'orange'
+      case 1:
+        return 'tomato'
+      case 0:
+        return 'red'
+      default:
+        return 'black'
+    }
+  }
+
+  function secToDisplay(sec: number): string {
+    switch (sec) {
+      case 6:
+        return '시작!'
+      case 0:
+        return '땡~'
+      default:
+        return `${sec}`
+    }
+  }
+
   return (
     <Container>
-      <TimerText>
-        {sec}
+      <TimerText color={getTimerTextColor(sec)}>
+        {secToDisplay(sec)}
       </TimerText>
     </Container>
   );
