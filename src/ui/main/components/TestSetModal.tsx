@@ -88,12 +88,12 @@ const SaveButton = styled.div`
   align-items: center;
   color: white;
   cursor: pointer;
-  
+
   margin-top: auto;
   margin-bottom: 16px;
-  
+
   font-family: "bold", serif;
-  
+
   &:hover {
     background-color: palegreen;
   }
@@ -122,17 +122,28 @@ interface Props {
   selectedTestSet: TestSetType[];
 
   setModalOpen(_: boolean): void;
+
   setSelectedTestSet(_: TestSetType[]): void;
 }
 
 const TestSetModal = ({isModalOpen, setModalOpen, selectedTestSet, setSelectedTestSet}: Props) => {
   const [testSetTypeList, setTestSetTypeList] = useState<TestSetInfo[]>([])
+  const [totalCount, setTotalCount] = useState<number>(0)
 
   useEffect(() => {
     const testSetList = getTestSetList()
     setTestSetTypeList(testSetList)
     setSelectedTestSet(testSetList.map(elem => elem.type))
   }, [])
+
+  useEffect(() => {
+    const counts = testSetTypeList.filter(info => selectedTestSet.includes(info.type)).map(elem => elem.count)
+    if (counts.length) {
+      setTotalCount(counts.reduce((l, r) => l + r))
+    } else {
+      setTotalCount(0)
+    }
+  }, [selectedTestSet])
 
   return (
     <Container>
@@ -152,12 +163,12 @@ const TestSetModal = ({isModalOpen, setModalOpen, selectedTestSet, setSelectedTe
                   } else {
                     setSelectedTestSet([...selectedTestSet, info.type])
                   }
-                }} />
+                }}/>
             })
           }
         </TypeListContainer>
         <SaveButton onClick={() => setModalOpen(false)}>
-          확인
+          {`확인: 문제수 ${totalCount}개`}
         </SaveButton>
       </ModalContainer>
     </Container>
@@ -167,15 +178,16 @@ const TestSetModal = ({isModalOpen, setModalOpen, selectedTestSet, setSelectedTe
 interface ListItemProps {
   name: string,
   selected: boolean,
+
   onClick(): void
 }
 
-const ListItem = ({ name, selected, onClick }: ListItemProps) => {
+const ListItem = ({name, selected, onClick}: ListItemProps) => {
 
   return (
     <ListItemContainer onClick={onClick}>
       <p>{name}</p>
-      <CheckIcon selected={selected} />
+      <CheckIcon selected={selected}/>
     </ListItemContainer>
   )
 }
