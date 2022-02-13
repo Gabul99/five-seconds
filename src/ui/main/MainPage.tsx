@@ -72,7 +72,13 @@ const MainPage = () => {
       { !isInGame &&
       <MainContainer>
         <TitleText>5초 준다!</TitleText>
-        <StartButton onClick={() => setInGame(true)}>
+        <StartButton onClick={() => {
+          if (selectedTestSet.length !== 0) {
+          setInGame(true)
+          } else {
+            alert('출제 범위 설정에서 최소 하나 이상의 범위를 설정해주세요!')
+          }
+        }}>
           가져와!
         </StartButton>
         <SettingButton onClick={() => setModalOpen(true)}>
