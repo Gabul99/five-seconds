@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {AiOutlineHome} from "react-icons/ai"
-import {getTestSet} from "../../data/TestSet";
+import {getTestSet} from "../../data/TestSetFactory";
 import WordDisplay from "./components/WordDisplay";
 import ControlBar from "./components/ControlBar";
 
