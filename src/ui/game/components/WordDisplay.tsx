@@ -38,6 +38,7 @@ const WordText = styled.p`
   font-family: "bold", serif;
   margin: 0;
   color: black;
+  text-align: center;
   animation: fadein 0.5s;
   -webkit-animation: fadein 0.5s;
   
