@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import GamePlayPage from "../game/GamePlayPage";
 import TestSetModal from "./components/TestSetModal";
-import {TestSetType} from "../../data/TestSetFactory";
+import {getTestSetList, TestSetType} from "../../data/TestSetFactory";
+import {TestSetInfo} from "../../type/TestSetInfo";
 
 const Container = styled.div`
   width: 100%;
@@ -66,6 +67,13 @@ const MainPage = () => {
   const [isInGame, setInGame] = useState<boolean>(false)
   const [isModalOpen, setModalOpen] = useState<boolean>(false)
   const [selectedTestSet, setSelectedTestSet] = useState<TestSetType[]>([])
+  const [testSetTypeList, setTestSetTypeList] = useState<TestSetInfo[]>([])
+
+  useEffect(() => {
+    const testSetList = getTestSetList()
+    setTestSetTypeList(testSetList)
+    setSelectedTestSet(testSetList.map(elem => elem.type))
+  }, [])
 
   return (
     <Container>
@@ -95,6 +103,7 @@ const MainPage = () => {
             setModalOpen={setModalOpen}
             selectedTestSet={selectedTestSet}
             setSelectedTestSet={setSelectedTestSet}
+            testSetTypeList={testSetTypeList}
         />
       }
     </Container>

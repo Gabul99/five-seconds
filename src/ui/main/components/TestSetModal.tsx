@@ -120,21 +120,15 @@ const CheckIcon = styled(AiFillCheckSquare)<{ selected: boolean }>`
 interface Props {
   isModalOpen: boolean;
   selectedTestSet: TestSetType[];
+  testSetTypeList: TestSetInfo[];
 
   setModalOpen(_: boolean): void;
 
   setSelectedTestSet(_: TestSetType[]): void;
 }
 
-const TestSetModal = ({isModalOpen, setModalOpen, selectedTestSet, setSelectedTestSet}: Props) => {
-  const [testSetTypeList, setTestSetTypeList] = useState<TestSetInfo[]>([])
+const TestSetModal = ({isModalOpen, setModalOpen, selectedTestSet, setSelectedTestSet, testSetTypeList}: Props) => {
   const [totalCount, setTotalCount] = useState<number>(0)
-
-  useEffect(() => {
-    const testSetList = getTestSetList()
-    setTestSetTypeList(testSetList)
-    setSelectedTestSet(testSetList.map(elem => elem.type))
-  }, [])
 
   useEffect(() => {
     const counts = testSetTypeList.filter(info => selectedTestSet.includes(info.type)).map(elem => elem.count)
