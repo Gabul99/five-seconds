@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import GamePlayPage from "../game/GamePlayPage";
 import TestSetModal from "./components/TestSetModal";
+import {TestSetType} from "../../data/TestSetFactory";
 
 const Container = styled.div`
   width: 100%;
@@ -62,8 +63,9 @@ const SettingButton = styled.div`
 `
 
 const MainPage = () => {
-  const [isInGame, setInGame] = useState<boolean>(false);
-  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [isInGame, setInGame] = useState<boolean>(false)
+  const [isModalOpen, setModalOpen] = useState<boolean>(false)
+  const [selectedTestSet, setSelectedTestSet] = useState<TestSetType[]>([])
 
   return (
     <Container>
@@ -82,7 +84,12 @@ const MainPage = () => {
         <GamePlayPage setInGame={setInGame}/>
       }
       { isModalOpen &&
-        <TestSetModal isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
+        <TestSetModal
+            isModalOpen={isModalOpen}
+            setModalOpen={setModalOpen}
+            selectedTestSet={selectedTestSet}
+            setSelectedTestSet={setSelectedTestSet}
+        />
       }
     </Container>
   )
