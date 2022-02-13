@@ -81,7 +81,7 @@ const MainPage = () => {
       </MainContainer>
       }
       { isInGame &&
-        <GamePlayPage setInGame={setInGame}/>
+        <GamePlayPage selectedTestSet={selectedTestSet} setInGame={setInGame}/>
       }
       { isModalOpen &&
         <TestSetModal

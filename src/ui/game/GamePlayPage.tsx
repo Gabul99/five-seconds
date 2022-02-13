@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {AiOutlineHome} from "react-icons/ai"
-import {getTestSet} from "../../data/TestSetFactory";
+import {getTestSet, TestSetType} from "../../data/TestSetFactory";
 import WordDisplay from "./components/WordDisplay";
 import ControlBar from "./components/ControlBar";
 
@@ -68,10 +68,11 @@ const ContentsContainer = styled.div`
 `
 
 interface Props {
+  selectedTestSet: TestSetType[]
   setInGame(_: boolean): void;
 }
 
-const GamePlayPage = ({setInGame}: Props) => {
+const GamePlayPage = ({ selectedTestSet, setInGame}: Props) => {
   const [isLoading, setLoading] = useState<boolean>(false)
   const [testSet, setTestSet] = useState<string[]>([])
   const [currentIdx, setCurrentIdx] = useState<number>(0)
@@ -82,7 +83,7 @@ const GamePlayPage = ({setInGame}: Props) => {
   useEffect(() => {
     setLoading(true)
 
-    const set = getTestSet()
+    const set = getTestSet(selectedTestSet)
     setTestSet(set)
     setCurrentIdx(getRandomIndex(set.length))
     let array: number[] = []

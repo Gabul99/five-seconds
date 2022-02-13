@@ -15,12 +15,12 @@ export enum TestSetType {
   SOCCER,
 }
 
-const allTestSetType: TestSetType[] = [
+const availableTestSetType: TestSetType[] = [
   TestSetType.KOREA_COMMON,
-  TestSetType.ART,
+  // TestSetType.ART,
   TestSetType.GAME_LOL,
-  TestSetType.GAME_KARTRIDER,
-  TestSetType.COUNTRY_CAPTITALS,
+  // TestSetType.GAME_KARTRIDER,
+  // TestSetType.COUNTRY_CAPTITALS,
   TestSetType.SOCCER
 ]
 
@@ -63,7 +63,7 @@ function getTestSetByType(type: TestSetType): string[] {
 }
 
 export function getTestSetList(): TestSetInfo[] {
-  return allTestSetType.map((elem) => {
+  return availableTestSetType.map((elem) => {
     return {
       type: elem,
       name: getTestSetNameByType(elem),
@@ -72,17 +72,11 @@ export function getTestSetList(): TestSetInfo[] {
   })
 }
 
-export function getTestSet(): string[] {
-  let testSets = [
-    koreaCommonTestSet,
-    artTestSet,
-    gameLOLTestSet,
-    gameKartriderTestSet,
-    countryAndCapitalsTestSet,
-    soccerTestSet,
-  ]
-
-  return testSets.reduce((l, r) => {
+export function getTestSet(selectedTestSet: TestSetType[]): string[] {
+  return selectedTestSet.map((elem) => {
+      return getTestSetByType(elem)
+    }
+  ).reduce((l, r) => {
     return [...l, ...r]
   })
 }
