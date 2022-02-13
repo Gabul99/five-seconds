@@ -5,6 +5,8 @@ import {countryAndCapitalsTestSet} from "./testsets/countryAndCapitals";
 import {gameKartriderTestSet} from "./testsets/gameKartrider";
 import {soccerTestSet} from "./testsets/soccer";
 import {TestSetInfo} from "../type/TestSetInfo";
+import {historyTestSet} from "./testsets/history";
+import {foodTestSet} from "./testsets/food";
 
 export enum TestSetType {
   KOREA_COMMON,
@@ -13,6 +15,8 @@ export enum TestSetType {
   GAME_KARTRIDER,
   COUNTRY_CAPTITALS,
   SOCCER,
+  HISTORY,
+  FOOD,
 }
 
 const availableTestSetType: TestSetType[] = [
@@ -21,7 +25,9 @@ const availableTestSetType: TestSetType[] = [
   TestSetType.GAME_LOL,
   // TestSetType.GAME_KARTRIDER,
   // TestSetType.COUNTRY_CAPTITALS,
-  TestSetType.SOCCER
+  TestSetType.SOCCER,
+  // TestSetType.HISTORY,
+  TestSetType.FOOD,
 ]
 
 function getTestSetNameByType(type: TestSetType): string {
@@ -38,6 +44,10 @@ function getTestSetNameByType(type: TestSetType): string {
       return "국가와 수도"
     case TestSetType.SOCCER:
       return "축구"
+    case TestSetType.HISTORY:
+      return "역사"
+    case TestSetType.FOOD:
+      return "음식"
     default:
       return ""
   }
@@ -57,6 +67,10 @@ function getTestSetByType(type: TestSetType): string[] {
       return countryAndCapitalsTestSet
     case TestSetType.SOCCER:
       return soccerTestSet
+    case TestSetType.HISTORY:
+      return historyTestSet
+    case TestSetType.FOOD:
+      return foodTestSet
     default:
       return []
   }
